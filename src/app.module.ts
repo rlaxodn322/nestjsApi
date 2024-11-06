@@ -3,14 +3,17 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { UserService } from './user/user.service';
-import { UserController } from './user/user.controller';
+import { GraphQLModule } from '@nestjs/graphql';
+import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
-import { PassportModule } from '@nestjs/passport';
+
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true, // 전역 모듈로 설정
+    }),
+    GraphQLModule.forRoot({
+      autoSchemaFile: true,
     }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
@@ -26,10 +29,12 @@ import { PassportModule } from '@nestjs/passport';
         synchronize: configService.get<string>('NODE_ENV') !== 'production',
       }),
     }),
+    AuthModule,
     UserModule,
+
     // PassportModule.register({ defaultStrategy: 'jwt' }),
   ],
-  controllers: [AppController, UserController],
-  providers: [AppService, UserService],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}
