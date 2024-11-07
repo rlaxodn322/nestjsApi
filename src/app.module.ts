@@ -6,14 +6,16 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
 import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true, // 전역 모듈로 설정
     }),
-    GraphQLModule.forRoot({
-      autoSchemaFile: true,
+    GraphQLModule.forRoot<ApolloDriverConfig>({
+      driver: ApolloDriver, // ApolloDriver를 추가
+      autoSchemaFile: true, // 자동으로 스키마 파일을 생성 (옵션)
     }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
