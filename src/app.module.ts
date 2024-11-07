@@ -7,6 +7,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
+import { WeatherModule } from './weather/weather.module';
 
 @Module({
   imports: [
@@ -33,6 +34,7 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
     }),
     AuthModule,
     UserModule,
+    WeatherModule,
 
     // PassportModule.register({ defaultStrategy: 'jwt' }),
   ],
