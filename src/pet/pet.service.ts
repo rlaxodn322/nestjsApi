@@ -12,7 +12,7 @@ export class PetService {
 
   async getPetData(): Promise<any> {
     const serviceKey = this.configService.get<string>('API_KEY');
-    const url = `https://apis.data.go.kr/1543061/abandonmentPublicSrvc/abandonmentPublic?serviceKey=${serviceKey}&pageNo=1&numOfRows=10&_type=json`;
+    const url = `https://apis.data.go.kr/1543061/abandonmentPublicSrvc/abandonmentPublic?serviceKey=${serviceKey}&pageNo=1&numOfRows=100&_type=json`;
     try {
       const response = await lastValueFrom(this.httpService.get(url));
       return this.filterPetData(response.data);
@@ -23,6 +23,7 @@ export class PetService {
   private filterPetData(data: any): any {
     return data.response.body.items.item.map((item: any) => ({
       desertionNo: item.desertionNo,
+      popfile: item.popfile,
       happenDt: item.happenDt,
       happenPlace: item.happenPlace,
       kindCd: item.kindCd,
