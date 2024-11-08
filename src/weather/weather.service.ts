@@ -3,6 +3,7 @@ import { HttpService } from '@nestjs/axios';
 import { ConfigService } from '@nestjs/config';
 import { AxiosResponse } from 'axios';
 import * as moment from 'moment-timezone';
+import { lastValueFrom } from 'rxjs';
 
 @Injectable()
 export class WeatherService {
@@ -16,12 +17,13 @@ export class WeatherService {
 
     const now = moment().tz('Asia/Seoul');
     const baseDate = now.format('YYYYMMDD');
-    const baseTime = now.format('HH00');
+    const baseTime = now.format('HHMM');
 
     const url = `https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst?serviceKey=${serviceKey}&pageNo=1&numOfRows=1000&dataType=json&base_date=${baseDate}&base_time=${baseTime}&nx=59&ny=126`;
 
     try {
-      const response = await this.httpService.get(url).toPromise();
+      //const response = await this.httpService.get(url).toPromise();
+      const response = await lastValueFrom(this.httpService.get(url));
       const categorizedData = this.categorizeData(
         response.data.response.body.items.item,
       );
