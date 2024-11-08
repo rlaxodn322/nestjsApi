@@ -14,13 +14,10 @@ export class WeatherService {
 
   async getWeatherData(): Promise<any> {
     const serviceKey = this.configService.get<string>('API_KEY');
-
     const now = moment().tz('Asia/Seoul');
     const baseDate = now.format('YYYYMMDD');
     const baseTime = now.format('HHMM');
-
     const url = `https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst?serviceKey=${serviceKey}&pageNo=1&numOfRows=1000&dataType=json&base_date=${baseDate}&base_time=${baseTime}&nx=59&ny=126`;
-
     try {
       //const response = await this.httpService.get(url).toPromise();
       const response = await lastValueFrom(this.httpService.get(url));
