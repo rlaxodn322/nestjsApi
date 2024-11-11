@@ -31,7 +31,9 @@ export class PetService {
     } catch (error) {
       console.error('Error fetching pet data:', error);
       throw new Error('유기견 데이터를 가져오는 중 오류가 발생했습니다.');
-    }
+    }[
+      
+    ]
   }
   private filterPetData(data: any): any {
     if (!data?.response?.body?.items?.item) {
