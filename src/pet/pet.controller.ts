@@ -9,8 +9,16 @@ export class PetController {
   //   const data = await this.petService.getPetData();
   //   return data;
   // }
+  // @Post('fetch')
+  // async fetchPetData(
+  //   @Body('numOfRows', 'selectedRegion') numOfRows: number,
+  //   selectedRegion: string,
+  // ) {
+  //   return await this.petService.getPetData(numOfRows, selectedRegion);
+  // }
   @Post('fetch')
-  async fetchPetData(@Body('numOfRows') numOfRows: number) {
-    return await this.petService.getPetData(numOfRows);
+  async fetchData(@Body() body: { numOfRows: number; selectedRegion: string }) {
+    const { numOfRows, selectedRegion } = body;
+    return await this.petService.getPetData(numOfRows, selectedRegion);
   }
 }
