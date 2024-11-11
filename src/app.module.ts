@@ -9,6 +9,7 @@ import { UserModule } from './user/user.module';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { WeatherModule } from './weather/weather.module';
 import { PetModule } from './pet/pet.module';
+import { ApiModule } from './api/api.module';
 
 @Module({
   imports: [
@@ -37,6 +38,7 @@ import { PetModule } from './pet/pet.module';
     UserModule,
     WeatherModule,
     PetModule,
+    ApiModule,
 
     // PassportModule.register({ defaultStrategy: 'jwt' }),
   ],
