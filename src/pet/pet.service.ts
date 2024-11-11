@@ -9,15 +9,26 @@ export class PetService {
     private readonly httpService: HttpService,
     private readonly configService: ConfigService,
   ) {}
+  // https://apis.data.go.kr/1543061/abandonmentPublicSrvc/abandonmentPublic?serviceKey=DpkRLgsobzDfVv8rurcfdgy4ocHfHmW7i18NoXZwOmaD%2BkJqsLCZ8dVcPaSWL4jV%2BG%2F2jIJVQOiFUkXFfSeqjg%3D%3D&upr_cd=6110000&pageNo=1&numOfRows=10
+  // async getPetData(): Promise<any> {
+  //   const serviceKey = this.configService.get<string>('API_KEY');
+  //   const url = `https://apis.data.go.kr/1543061/abandonmentPublicSrvc/abandonmentPublic?serviceKey=${serviceKey}&upr_cd=6110000&pageNo=1&numOfRows=1000&_type=json`;
+  //   try {
+  //     const response = await lastValueFrom(this.httpService.get(url));
+  //     return this.filterPetData(response.data);
+  //   } catch (error) {
+  //     throw new Error('Error fetching pet data');
+  //   }
+  // }
 
-  async getPetData(): Promise<any> {
+  async getPetData(numOfRows: number): Promise<any> {
     const serviceKey = this.configService.get<string>('API_KEY');
-    const url = `https://apis.data.go.kr/1543061/abandonmentPublicSrvc/abandonmentPublic?serviceKey=${serviceKey}&pageNo=1&numOfRows=100&_type=json`;
+    const url = `https://apis.data.go.kr/1543061/abandonmentPublicSrvc/abandonmentPublic?serviceKey=${serviceKey}&upr_cd=6110000&pageNo=1&numOfRows=${numOfRows}&_type=json`;
     try {
       const response = await lastValueFrom(this.httpService.get(url));
       return this.filterPetData(response.data);
     } catch (error) {
-      throw new Error('Error fetching pet data');
+      throw new Error('Error');
     }
   }
   private filterPetData(data: any): any {
