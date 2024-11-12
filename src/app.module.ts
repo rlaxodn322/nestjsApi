@@ -11,6 +11,7 @@ import { WeatherModule } from './weather/weather.module';
 import { PetModule } from './pet/pet.module';
 import { ApiModule } from './api/api.module';
 import { HelthuploadModule } from './helthupload/helthupload.module';
+import { ExperienceModule } from './experience/experience.module';
 
 @Module({
   imports: [
@@ -41,6 +42,7 @@ import { HelthuploadModule } from './helthupload/helthupload.module';
     PetModule,
     ApiModule,
     HelthuploadModule,
+    ExperienceModule,
 
     // PassportModule.register({ defaultStrategy: 'jwt' }),
   ],
