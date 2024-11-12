@@ -12,6 +12,7 @@ export class WeatherController {
     return this.formatWeatherData(data);
   }
 
+
   formatWeatherData(data: any): WeatherDataDto {
     return {
       temperature: this.formatWeatherItem(data.T1H),
