@@ -7,8 +7,8 @@ export class WeatherController {
   constructor(private readonly weatherService: WeatherService) {}
 
   @Get('current')
-  async getWeather() {
-    const data = await this.weatherService.getWeatherData();
+  async getWeather(@Query('lat') lat: number, @Query('lng') lng: number) {
+    const data = await this.weatherService.getWeatherData(lat, lng);
     return this.formatWeatherData(data);
   }
 
