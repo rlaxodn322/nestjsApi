@@ -17,7 +17,6 @@ export class ApiService {
   ) {
     this.apiKey = this.configService.get<string>('API_KEY1', 'default_api_key');
     this.baseUrl = this.configService.get<string>(
-      
       'BASE_URL',
       'default_base_url',
     );

@@ -21,10 +21,12 @@ export class ExperienceController {
   ): Promise<Experience> {
     return this.experienceService.createExperience(title, description);
   }
+  
   @Get()
   async getAll(): Promise<Experience[]> {
     return this.experienceService.getAllExperiences();
   }
+
   @Get(':id')
   async getOne(@Param('id') id: number): Promise<Experience> {
     return this.experienceService.getExperienceById(id);
@@ -32,6 +34,7 @@ export class ExperienceController {
   @Put(':id')
   async update(
     @Param('id') id: number,
+    
     @Body('title') title: string,
     @Body('description') description: string,
   ): Promise<Experience> {
