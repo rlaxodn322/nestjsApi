@@ -12,6 +12,8 @@ import { PetModule } from './pet/pet.module';
 import { ApiModule } from './api/api.module';
 import { HelthuploadModule } from './helthupload/helthupload.module';
 import { ExperienceModule } from './experience/experience.module';
+import { ReviewModule } from './review/review.module';
+import { ProductModule } from './product/product.module';
 
 @Module({
   imports: [
@@ -43,6 +45,8 @@ import { ExperienceModule } from './experience/experience.module';
     ApiModule,
     HelthuploadModule,
     ExperienceModule,
+    ReviewModule,
+    ProductModule,
 
     // PassportModule.register({ defaultStrategy: 'jwt' }),
   ],
