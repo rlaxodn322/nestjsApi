@@ -14,6 +14,7 @@ import { HelthuploadModule } from './helthupload/helthupload.module';
 import { ExperienceModule } from './experience/experience.module';
 import { ReviewModule } from './review/review.module';
 import { ProductModule } from './product/product.module';
+import { TodosModule } from './todos/todos.module';
 
 @Module({
   imports: [
@@ -47,6 +48,7 @@ import { ProductModule } from './product/product.module';
     ExperienceModule,
     ReviewModule,
     ProductModule,
+    TodosModule,
 
     // PassportModule.register({ defaultStrategy: 'jwt' }),
   ],
