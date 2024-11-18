@@ -17,6 +17,7 @@ import { ProductModule } from './product/product.module';
 import { TodosModule } from './todos/todos.module';
 import { BookModule } from './book/book.module';
 import { MovieModule } from './movie/movie.module';
+import { MusicModule } from './music/music.module';
 
 @Module({
   imports: [
@@ -53,6 +54,7 @@ import { MovieModule } from './movie/movie.module';
     TodosModule,
     BookModule,
     MovieModule,
+    MusicModule,
 
     // PassportModule.register({ defaultStrategy: 'jwt' }),
   ],
